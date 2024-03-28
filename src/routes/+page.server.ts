@@ -1,3 +1,4 @@
+import type { ApiWeatherData, WeatherData } from "$lib/types/weather-data";
 import type { Actions } from "@sveltejs/kit";
 
 export const actions = {
@@ -8,7 +9,8 @@ export const actions = {
     // const res = (await fetch(`https://myServerUrl?date=${date}`)).json()
 
     const dummyRes = await event.fetch("/sample-response-lm.json");
-    const weatherData = {"Le Mans": await dummyRes.json()};
+    const dummyWeatherData: ApiWeatherData = await dummyRes.json();
+    const weatherData: WeatherData = {"Le Mans": dummyWeatherData};
     
     return weatherData;
   }
