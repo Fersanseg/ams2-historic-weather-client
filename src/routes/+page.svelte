@@ -1,3 +1,12 @@
+<script lang=ts>
+  import { enhance } from "$app/forms";
+    import type { ActionData } from "./$types";
+
+  export let currDate = new Date().toISOString().split('T')[0];
+  export let form: ActionData;
+  console.log("FORM", form);
+</script>
+
 <div class="background">
   <div class="container">
     <h1>AMS2 Historic Weather Report Generator</h1>
@@ -5,8 +14,8 @@
     <h2>Useful for setting up races or championships using the Real Weather option in the game</h2>
   </div>
 
-  <form action="POST">
-    <input type="date" name="date" id="date">
+  <form method="POST">
+    <input type="date" name="date" id="date" bind:value={currDate}>
     <button type="submit"><span class="material-symbols-outlined">rainy</span></button>
   </form>
 </div>
