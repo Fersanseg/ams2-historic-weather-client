@@ -3,24 +3,26 @@
 
   export let currDate = new Date().toISOString().split('T')[0];
   export let form: ActionData;
-  console.log("FORM", form);
 </script>
 
 <div class="background">
   <div class="container">
-    <h1>AMS2 Historic Weather Report Generator</h1>
-    <h2>Enter a date and see what the weather was like on every track in Automobilista 2 on that day!</h2>
-    <h2>Useful for setting up races or championships using the Real Weather option in the game</h2>
+    {#if form == null}
+      <h1>AMS2 Historic Weather Report Generator</h1>
+      <h2>Enter a date and see what the weather was like on every track in Automobilista 2 on that day!</h2>
+      <h2>Useful for setting up races or championships using the Real Weather option in the game</h2>
+      
+      <form method="POST" action="?/submit">
+        <input type="date" name="date" id="date" bind:value={currDate}>
+        <button type="submit"><span class="material-symbols-outlined">rainy</span></button>
+      </form>
+      {:else}
+      <!-- TODO: Weather data table -->
+      <form action="?/clear" method="POST">
+        <button type="submit" id="reset-button"><span>Reset</span></button>
+      </form>
+    {/if}
   </div>
-
-  <form method="POST" action="?/submit">
-    <input type="date" name="date" id="date" bind:value={currDate}>
-    <button type="submit"><span class="material-symbols-outlined">rainy</span></button>
-  </form>
-
-  <form action="?/clear" method="POST">
-    <button type="submit" id="reset-button"><span>Reset</span></button>
-  </form>
 </div>
 
 <style>
