@@ -30,29 +30,29 @@
         </thead>
         <tbody>
           <tr>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-          </tr>
-          <tr>
-            <td>Body</td>
-            <td>Body</td>
+            <td class="track-name">Body</td>
+            <td class="map">Body</td>
             <td>Body</td>
             <td>Body</td>
             <td>Body</td>
           </tr>
           <tr>
-            <td>Body</td>
-            <td>Body</td>
+            <td class="track-name">Body</td>
+            <td class="map">Body</td>
             <td>Body</td>
             <td>Body</td>
             <td>Body</td>
           </tr>
           <tr>
+            <td class="track-name">Body</td>
+            <td class="map">Body</td>
             <td>Body</td>
             <td>Body</td>
+            <td>Body</td>
+          </tr>
+          <tr>
+            <td class="track-name">Body</td>
+            <td class="map">Body</td>
             <td>Body</td>
             <td>Body</td>
             <td>Body</td>
@@ -160,6 +160,11 @@
 
   td, th {
     padding: 0.7rem;
+  }
+
+  .track-name,
+  .map {
+    width: 10rem;
   }
 
 </style>
