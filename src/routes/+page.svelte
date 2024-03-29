@@ -18,7 +18,47 @@
       </form>
       {:else}
       <h2>Track-side weather on all tracks on {form?.localeDate}</h2>
-      <!-- TODO: Weather data table -->
+      <table>
+        <thead>
+          <tr>
+            <th>Circuit</th>
+            <th>Map</th>
+            <th>Avg. temperature</th>
+            <th>Avg. precipitation</th>
+            <th>Avg. cloud cover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+          </tr>
+          <tr>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+          </tr>
+          <tr>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+          </tr>
+          <tr>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+            <td>Body</td>
+          </tr>
+        </tbody>
+      </table>
       <form action="?/clear" method="POST">
         <button type="submit" id="reset-button"><span>Reset</span></button>
       </form>
@@ -38,6 +78,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     padding-top: 10rem;
     color: aliceblue;
@@ -92,6 +133,33 @@
   #reset-button {
     width: 8%;
     font-size: larger;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-radius: 1rem;
+    width: 70%;
+  }
+
+  table {
+    margin-top: 2rem;
+  }
+
+  tr {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  }
+  tr th:first-child,
+  tr td:first-child {
+    border: 1px solid white;
+  }
+  tr td:last-child,
+  tr th:last-child {
+    border-right: 1px solid white;
+  }
+
+  td, th {
+    padding: 0.7rem;
   }
 
 </style>
