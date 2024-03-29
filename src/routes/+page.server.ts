@@ -2,7 +2,7 @@ import type { ApiWeatherData, WeatherData } from "$lib/types/weather-data";
 import type { Actions } from "@sveltejs/kit";
 
 export const actions = {
-  default: async (event) => {
+  submit: async (event) => {
     const date = (await event.request.formData()).get('date');
 
     // Call the backend with the given date (once the server is actually implemented)
@@ -13,5 +13,8 @@ export const actions = {
     const weatherData: WeatherData = {"Le Mans": dummyWeatherData};
     
     return weatherData;
+  },
+  clear: async (event) => {
+    return null;
   }
 } satisfies Actions

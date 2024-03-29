@@ -13,9 +13,13 @@
     <h2>Useful for setting up races or championships using the Real Weather option in the game</h2>
   </div>
 
-  <form method="POST">
+  <form method="POST" action="?/submit">
     <input type="date" name="date" id="date" bind:value={currDate}>
     <button type="submit"><span class="material-symbols-outlined">rainy</span></button>
+  </form>
+
+  <form action="?/clear" method="POST">
+    <button type="submit" id="reset-button"><span>Reset</span></button>
   </form>
 </div>
 
@@ -80,6 +84,11 @@
 
   span {
     color: aliceblue;
+  }
+
+  #reset-button {
+    width: 8%;
+    font-size: larger;
   }
 
 </style>
