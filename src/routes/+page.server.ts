@@ -1,4 +1,5 @@
 import type { ApiWeatherData, WeatherData } from "$lib/types/weather-data";
+import { formatDate } from "$lib/utils/format-date";
 import type { Actions } from "@sveltejs/kit";
 
 export const actions = {
@@ -7,7 +8,7 @@ export const actions = {
     if (date == null)
       return;
 
-    const localeDate = new Date(date.toString()).toLocaleDateString();
+    const localeDate = formatDate(date.toString());
     
     // Call the backend with the given date (once the server is actually implemented)
     // const res = (await fetch(`https://myServerUrl?date=${date}`)).json()
@@ -16,7 +17,7 @@ export const actions = {
     const dummyWeatherData: ApiWeatherData = await dummyRes.json();
     const weatherData: WeatherData = {"Le Mans": dummyWeatherData};
     
-    return {date, weatherData};
+    return {localeDate, weatherData};
   },
   clear: async (event) => {
     return null;

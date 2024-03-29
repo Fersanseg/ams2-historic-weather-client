@@ -17,6 +17,7 @@
         <button type="submit"><span class="material-symbols-outlined">rainy</span></button>
       </form>
       {:else}
+      <h2>Track-side weather on all tracks on {form?.localeDate}</h2>
       <!-- TODO: Weather data table -->
       <form action="?/clear" method="POST">
         <button type="submit" id="reset-button"><span>Reset</span></button>
