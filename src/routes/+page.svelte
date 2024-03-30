@@ -1,5 +1,6 @@
 <script lang=ts>
-  import type { ActionData } from "./$types";
+  import TableRow from "$lib/components/TableRow.svelte";
+import type { ActionData } from "./$types";
 
   export let currDate = new Date().toISOString().split('T')[0];
   export let form: ActionData;
@@ -29,13 +30,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="track-name">Body</td>
-            <td class="map">Body</td>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-          </tr>
+          <TableRow>
+
+          </TableRow>
           <tr>
             <td class="track-name">Body</td>
             <td class="map">Body</td>
