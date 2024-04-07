@@ -30,32 +30,13 @@ import type { ActionData } from "./$types";
           </tr>
         </thead>
         <tbody>
-          <TableRow>
-
-          </TableRow>
-          <tr>
-            <td class="track-name">Body</td>
-            <td class="map">Body</td>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-          </tr>
-          <tr>
-            <td class="track-name">Body</td>
-            <td class="map">Body</td>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-          </tr>
-          <tr>
-            <td class="track-name">Body</td>
-            <td class="map">Body</td>
-            <td>Body</td>
-            <td>Body</td>
-            <td>Body</td>
-          </tr>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
         </tbody>
       </table>
+
       <form action="?/clear" method="POST">
         <button type="submit" id="reset-button"><span>Reset</span></button>
       </form>
@@ -146,22 +127,14 @@ import type { ActionData } from "./$types";
     border-top: 1px solid white;
     border-bottom: 1px solid white;
   }
-  tr th:first-child,
-  tr td:first-child {
+  tr th:first-child {
     border: 1px solid white;
   }
-  tr td:last-child,
   tr th:last-child {
     border-right: 1px solid white;
   }
 
-  td, th {
+  th {
     padding: 0.7rem;
   }
-
-  .track-name,
-  .map {
-    width: 10rem;
-  }
-
 </style>

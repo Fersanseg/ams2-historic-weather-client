@@ -1,17 +1,25 @@
 <script lang=ts>
+  import { spring } from "svelte/motion";
+  import { fade } from "svelte/transition";
+
   let expand = false;
+
+  const heightSpring = spring(0, {stiffness: 0.07, damping: 0.6});
+  $: heightSpring.set(expand ? 400 : 0);
+
+  function toggleExpand() {expand = !expand}
 </script>
 
-<tr on:click={() => expand = !expand}>
+<tr on:click={toggleExpand} style="position: relative; overflow: hidden; height: {$heightSpring}px">
   {#if !expand}
-    <td class="track-name">Body</td>
-    <td class="map">Body</td>
-    <td>Body</td>
-    <td>Body</td>
-    <td>Body</td>
+    <td class="track-name" in:fade={{duration: 450}}>Body</td>
+    <td class="map" in:fade={{duration: 450}}>Body</td>
+    <td in:fade={{duration: 450}}>Body</td>
+    <td in:fade={{duration: 450}}>Body</td>
+    <td in:fade={{duration: 450}}>Body</td>
   {:else}
-    <td colspan="5">
-      <div class="show-container">
+    <td colspan="5" in:fade={{duration: 450}} style="height:100%">
+      <div style="height: 100%;" class="show-container">
         <span>FOO</span>
         <span>FOO</span>
         <span>FOO</span>
@@ -39,8 +47,6 @@
   }
 
   .show-container {
-    height: 20rem;
-    width: 100%;
     background-color: darkgreen;
 
     display: flex;
