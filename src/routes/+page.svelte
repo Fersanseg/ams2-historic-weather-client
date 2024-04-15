@@ -17,23 +17,22 @@ import type { ActionData } from "./$types";
         <input type="date" name="date" id="date" bind:value={currDate}>
         <button type="submit"><span class="material-symbols-outlined">rainy</span></button>
       </form>
-      {:else}
+    {:else}
       <h2>Track-side weather on all tracks on {form?.localeDate}</h2>
       <table>
         <thead>
           <tr>
             <th>Circuit</th>
             <th>Map</th>
-            <th>Avg. temperature</th>
+            <th>Avg. ambient temp.</th>
             <th>Avg. precipitation</th>
             <th>Avg. cloud cover</th>
           </tr>
         </thead>
         <tbody>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
+          {#each form?.weatherData as track}
+            <TableRow weatherData={track}/>
+          {/each}
         </tbody>
       </table>
 

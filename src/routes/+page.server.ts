@@ -15,7 +15,9 @@ export const actions = {
     
     const dummyRes = await event.fetch("/sample-response-lm.json");
     const dummyWeatherData: ApiWeatherData = await dummyRes.json();
-    const weatherData: WeatherData = {"Le Mans": dummyWeatherData};
+    const weatherData: WeatherData[] = Array(6).fill(null).map((_,i) => {
+      return {trackName: `Le Mans ${i+1}`, data: dummyWeatherData}
+    })
     
     return {localeDate, weatherData};
   },

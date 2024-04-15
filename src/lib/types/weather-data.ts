@@ -1,5 +1,6 @@
 export interface WeatherData {
-  [track: string]: ApiWeatherData
+  trackName: string,
+  data: ApiWeatherData
 }
 
 export interface ApiWeatherData {
@@ -17,11 +18,13 @@ export interface ApiWeatherData {
 interface Hourly {
   cloud_cover: number[],
   rain: number[],
+  temperature_2m: number[],
   time: string[]
 }
 
 interface HourlyUnits {
   cloud_cover: "%",
   rain: "mm",
+  temperature_2m: "°C",
   time: "iso8601"
 }
