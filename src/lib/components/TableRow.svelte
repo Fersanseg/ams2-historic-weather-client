@@ -1,8 +1,12 @@
 <script lang=ts>
   import type { WeatherData } from "$lib/types/weather-data";
+  import type { ChartConfiguration } from "chart.js";
   import { round } from "$lib/utils/round";
   import { spring } from "svelte/motion";
   import { fade } from "svelte/transition";
+  import Chart from "./Chart.svelte";
+  import { formatHour } from "$lib/utils/format-hour";
+  
 
   export let weatherData: WeatherData;
   
@@ -14,7 +18,41 @@
   const heightSpring = spring(0, {stiffness: 0.07, damping: 0.6});
   $: heightSpring.set(expand ? 400 : 0);
 
-  function toggleExpand() {expand = !expand}
+  function toggleExpand() {expand = !expand};
+
+  const rainData = weatherData.data.hourly.rain;
+  const chartConfig: ChartConfiguration = {
+    type: 'bar',
+    data: {
+      labels: rainData.map((r, i) => `${formatHour(i)} - ${r} l/m²`),
+      datasets: [{
+			label: "Rain",
+        data: rainData,
+        borderWidth: 2,
+        backgroundColor: rainData.map(_ => "#3e95cd"),
+        borderColor: rainData.map(_ => "#8e5ea2"),
+      }]
+    },
+    options: {
+      scales: {
+        x: {
+          display: false
+        },
+        y: {
+          ticks: {
+            color: "#fff"
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "#fff"
+          }
+        }
+      }
+    }
+  }
 </script>
 
 <tr on:click={toggleExpand} style="position: relative; overflow: hidden; height: {$heightSpring}px">
@@ -27,10 +65,8 @@
   {:else}
     <td colspan="5" in:fade={{duration: 450}} style="height:100%">
       <div style="height: 100%;" class="show-container">
-        <span>FOO</span>
-        <span>FOO</span>
-        <span>FOO</span>
-        <span>FOO</span>
+        <h2>{weatherData.trackName}</h2>
+        <Chart config={chartConfig}></Chart>
       </div>
     </td>
   {/if}
@@ -53,10 +89,13 @@
     padding: 0.7rem;
   }
 
-  .show-container {
-    background-color: darkgreen;
+  h2 {
+    margin: 0.3rem;
+  }
 
+  .show-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     text-align: center;
