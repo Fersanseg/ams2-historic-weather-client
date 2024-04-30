@@ -6,6 +6,7 @@
   import { fade } from "svelte/transition";
   import Chart from "./Chart.svelte";
   import { formatHour } from "$lib/utils/format-hour";
+    import { getChartConfig } from "$lib/utils/chart-config";
   
 
   export let weatherData: WeatherData;
@@ -16,43 +17,12 @@
   const cloudCoverAverage = round(weatherData.data.hourly.cloud_cover.reduce((acc, curr) => acc + curr) / 24);
 
   const heightSpring = spring(0, {stiffness: 0.07, damping: 0.6});
-  $: heightSpring.set(expand ? 400 : 0);
+  $: heightSpring.set(expand ? 550 : 0);
 
   function toggleExpand() {expand = !expand};
 
   const rainData = weatherData.data.hourly.rain;
-  const chartConfig: ChartConfiguration = {
-    type: 'bar',
-    data: {
-      labels: rainData.map((r, i) => `${formatHour(i)} - ${r} l/m²`),
-      datasets: [{
-			label: "Rain",
-        data: rainData,
-        borderWidth: 2,
-        backgroundColor: rainData.map(_ => "#3e95cd"),
-        borderColor: rainData.map(_ => "#8e5ea2"),
-      }]
-    },
-    options: {
-      scales: {
-        x: {
-          display: false
-        },
-        y: {
-          ticks: {
-            color: "#fff"
-          }
-        }
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: "#fff"
-          }
-        }
-      }
-    }
-  }
+  const chartConfig: ChartConfiguration = getChartConfig(weatherData)
 </script>
 
 <tr on:click={toggleExpand} style="position: relative; overflow: hidden; height: {$heightSpring}px">
@@ -66,7 +36,12 @@
     <td colspan="5" in:fade={{duration: 450}} style="height:100%">
       <div style="height: 100%;" class="show-container">
         <h2>{weatherData.trackName}</h2>
-        <Chart config={chartConfig}></Chart>
+        <div class="chart-container">
+          <div><Chart config={chartConfig}></Chart></div>
+          <div><Chart config={chartConfig}></Chart></div>
+          <div><Chart config={chartConfig}></Chart></div>
+          <div><Chart config={chartConfig}></Chart></div>
+        </div>
       </div>
     </td>
   {/if}
@@ -99,5 +74,13 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
+  }
+
+  .chart-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 </style>
