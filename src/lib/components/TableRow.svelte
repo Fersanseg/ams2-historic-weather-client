@@ -34,10 +34,10 @@
       <div style="height: 100%;" class="show-container">
         <h2>{weatherData.trackName}</h2>
         <div class="chart-container">
-          <div><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
-          <div><Chart config={getChartConfig(weatherData, 'cloud')}></Chart></div>
-          <div><Chart config={getChartConfig(weatherData, 'temp')}></Chart></div>
-          <div><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
+          <div class="chart"><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
+          <div class="chart"><Chart config={getChartConfig(weatherData, 'cloud')}></Chart></div>
+          <div class="chart"><Chart config={getChartConfig(weatherData, 'temp')}></Chart></div>
+          <div class="chart"><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
         </div>
       </div>
     </td>
@@ -79,5 +79,13 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
+    row-gap: 1rem;
+    justify-items: center;
+  }
+
+  .chart {
+    display: flex; 
+    justify-content: center;
+    width: 90%;
   }
 </style>

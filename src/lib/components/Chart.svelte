@@ -19,11 +19,4 @@
 	}
 </script>
 
-<canvas class="chart" use:handleChart={config} />
-
-<style>
-  .chart {
-    height: 100%; 
-    object-fit: fill
-  }
-</style>
+<canvas use:handleChart={config} />
