@@ -20,9 +20,6 @@
   $: heightSpring.set(expand ? 550 : 0);
 
   function toggleExpand() {expand = !expand};
-
-  const rainData = weatherData.data.hourly.rain;
-  const chartConfig: ChartConfiguration = getChartConfig(weatherData)
 </script>
 
 <tr on:click={toggleExpand} style="position: relative; overflow: hidden; height: {$heightSpring}px">
@@ -37,10 +34,10 @@
       <div style="height: 100%;" class="show-container">
         <h2>{weatherData.trackName}</h2>
         <div class="chart-container">
-          <div><Chart config={chartConfig}></Chart></div>
-          <div><Chart config={chartConfig}></Chart></div>
-          <div><Chart config={chartConfig}></Chart></div>
-          <div><Chart config={chartConfig}></Chart></div>
+          <div><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
+          <div><Chart config={getChartConfig(weatherData, 'cloud')}></Chart></div>
+          <div><Chart config={getChartConfig(weatherData, 'temp')}></Chart></div>
+          <div><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
         </div>
       </div>
     </td>
