@@ -45,9 +45,10 @@ import type { ActionData } from "./$types";
 
 <style>
   .background {
+    position: static;
     background: rgb(46,46,46);
     background: linear-gradient(144deg, rgba(46,46,46,1) 0%, rgb(65, 11, 0) 100%); 
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .container {
@@ -57,7 +58,7 @@ import type { ActionData } from "./$types";
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 10rem;
+    padding: 10rem 0;
     color: aliceblue;
     font-family: 'Courier New', Courier, monospace;
   }
