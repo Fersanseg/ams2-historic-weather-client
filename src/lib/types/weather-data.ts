@@ -24,7 +24,7 @@ interface Hourly {
 
 interface HourlyUnits {
   cloud_cover: "%",
-  rain: "mm",
+  rain: "l/m²",
   temperature_2m: "°C",
   time: "iso8601"
 }

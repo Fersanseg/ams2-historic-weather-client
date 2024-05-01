@@ -15,6 +15,7 @@ export const actions = {
     
     const dummyRes = await event.fetch("/sample-response-lm.json");
     const dummyWeatherData: ApiWeatherData = await dummyRes.json();
+    dummyWeatherData.hourly_units.rain = "l/m²"; // Default unit is "mm". I think that "l/m²" works better and is more descriptive
     const weatherData: WeatherData[] = Array(6).fill(null).map((_,i) => {
       return {trackName: `Le Mans ${i+1}`, data: dummyWeatherData}
     })

@@ -1,13 +1,10 @@
 <script lang=ts>
   import type { WeatherData } from "$lib/types/weather-data";
-  import type { ChartConfiguration } from "chart.js";
   import { round } from "$lib/utils/round";
   import { spring } from "svelte/motion";
   import { fade } from "svelte/transition";
   import Chart from "./Chart.svelte";
-  import { formatHour } from "$lib/utils/format-hour";
-    import { getChartConfig } from "$lib/utils/chart-config";
-  
+  import { getChartConfig } from "$lib/utils/chart-config";
 
   export let weatherData: WeatherData;
   
