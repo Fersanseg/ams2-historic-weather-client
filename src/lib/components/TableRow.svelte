@@ -17,7 +17,7 @@
   const cloudCoverAverage = round(weatherData.data.hourly.cloud_cover.reduce((acc, curr) => acc + curr) / 24);
 
   const heightSpring = spring(0, {stiffness: 0.07, damping: 0.6});
-  $: heightSpring.set(expand ? 550 : 0);
+  $: heightSpring.set(expand ? 200 : 0);
 
   function toggleExpand() {expand = !expand};
 </script>
@@ -25,7 +25,6 @@
 <tr on:click={toggleExpand} style="position: relative; overflow: hidden; height: {$heightSpring}px">
   {#if !expand}
     <td class="track-name" in:fade={{duration: 450}}>{weatherData.trackName}</td>
-    <td class="map" in:fade={{duration: 450}}>Body</td>
     <td in:fade={{duration: 450}}>{temperatureAverage} {weatherData.data.hourly_units.temperature_2m}</td>
     <td in:fade={{duration: 450}}>{rainAverage} {weatherData.data.hourly_units.rain}</td>
     <td in:fade={{duration: 450}}>{cloudCoverAverage} {weatherData.data.hourly_units.cloud_cover}</td>
@@ -34,10 +33,9 @@
       <div style="height: 100%;" class="show-container">
         <h2>{weatherData.trackName}</h2>
         <div class="chart-container">
-          <div class="chart"><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
-          <div class="chart"><Chart config={getChartConfig(weatherData, 'cloud')}></Chart></div>
           <div class="chart"><Chart config={getChartConfig(weatherData, 'temp')}></Chart></div>
           <div class="chart"><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>
+          <div class="chart"><Chart config={getChartConfig(weatherData, 'cloud')}></Chart></div>
         </div>
       </div>
     </td>
@@ -77,8 +75,7 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     row-gap: 1rem;
     justify-items: center;
   }

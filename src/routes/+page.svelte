@@ -23,7 +23,6 @@ import type { ActionData } from "./$types";
         <thead>
           <tr>
             <th>Circuit</th>
-            <th>Map</th>
             <th>Avg. ambient temp.</th>
             <th>Avg. precipitation</th>
             <th>Avg. cloud cover</th>
@@ -116,7 +115,7 @@ import type { ActionData } from "./$types";
   table {
     border-collapse: collapse;
     border-radius: 1rem;
-    width: 70%;
+    width: 90%;
   }
 
   table {
