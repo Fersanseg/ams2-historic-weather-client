@@ -4,6 +4,7 @@ import type { ActionData } from "./$types";
 
   export let currDate = new Date().toISOString().split('T')[0];
   export let form: ActionData;
+  console.log(form);
 </script>
 
 <div class="background">
