@@ -2,6 +2,8 @@ import type { ApiWeatherData, WeatherData } from "$lib/types/weather-data";
 import { formatDate } from "$lib/utils/format-date";
 import type { Actions } from "@sveltejs/kit";
 
+import { SERVER_URL } from "$env/static/private";
+
 export const actions = {
   submit: async (event) => {
     const date = (await event.request.formData()).get('date');
@@ -10,7 +12,7 @@ export const actions = {
 
     const localeDate = formatDate(date.toString());
     
-    const res = await (await fetch(`http://127.0.0.1:9000?date=${date}`)).json();
+    const res = await (await fetch(`${SERVER_URL}?date=${date}`)).json();
     
     const dummyRes = await event.fetch("/sample-response-lm.json");
     const dummyWeatherData: ApiWeatherData = await dummyRes.json();
