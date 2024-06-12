@@ -10,7 +10,7 @@ export const actions = {
 
     const localeDate = formatDate(date.toString());
     
-    const res = await (await fetch(`http://127.0.0.1:9000?date=${date}`)).text();
+    const res = await (await fetch(`http://127.0.0.1:9000?date=${date}`)).json();
     
     const dummyRes = await event.fetch("/sample-response-lm.json");
     const dummyWeatherData: ApiWeatherData = await dummyRes.json();
