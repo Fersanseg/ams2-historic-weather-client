@@ -1,5 +1,5 @@
 export interface WeatherData {
-  trackName: string,
+  name: string,
   data: ApiWeatherData
 }
 

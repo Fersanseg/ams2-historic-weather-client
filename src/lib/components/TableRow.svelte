@@ -21,14 +21,14 @@
 
 <tr on:click={toggleExpand} style="position: relative; overflow: hidden; height: {$heightSpring}px">
   {#if !expand}
-    <td class="track-name" in:fade={{duration: 450}}>{weatherData.trackName}</td>
+    <td class="track-name" in:fade={{duration: 450}}>{weatherData.name}</td>
     <td in:fade={{duration: 450}}>{temperatureAverage} {weatherData.data.hourly_units.temperature_2m}</td>
     <td in:fade={{duration: 450}}>{rainAverage} {weatherData.data.hourly_units.rain}</td>
     <td in:fade={{duration: 450}}>{cloudCoverAverage} {weatherData.data.hourly_units.cloud_cover}</td>
   {:else}
     <td colspan="5" in:fade={{duration: 450}} style="height:100%">
       <div style="height: 100%;" class="show-container">
-        <h2>{weatherData.trackName}</h2>
+        <h2>{weatherData.name}</h2>
         <div class="chart-container">
           <div class="chart"><Chart config={getChartConfig(weatherData, 'temp')}></Chart></div>
           <div class="chart"><Chart config={getChartConfig(weatherData, 'rain')}></Chart></div>

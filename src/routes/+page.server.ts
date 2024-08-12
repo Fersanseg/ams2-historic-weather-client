@@ -12,16 +12,10 @@ export const actions = {
 
     const localeDate = formatDate(date.toString());
     
-    const res = await (await fetch(`${SERVER_URL}?date=${date}`)).json();
+    let weatherData = await (await fetch(`${SERVER_URL}?date=${date}`)).json()
+    weatherData.forEach((r: WeatherData) => { r.data.hourly_units.rain = "l/m²" });
     
-    const dummyRes = await event.fetch("/sample-response-lm.json");
-    const dummyWeatherData: ApiWeatherData = await dummyRes.json();
-    dummyWeatherData.hourly_units.rain = "l/m²"; // Default unit is "mm". I think that "l/m²" works better and is more descriptive
-    const weatherData: WeatherData[] = Array(6).fill(null).map((_,i) => {
-      return {trackName: `Le Mans ${i+1}`, data: dummyWeatherData}
-    })
-    
-    return {localeDate, weatherData, res};
+    return {localeDate, weatherData};
   },
   clear: async (event) => {
     return null;
